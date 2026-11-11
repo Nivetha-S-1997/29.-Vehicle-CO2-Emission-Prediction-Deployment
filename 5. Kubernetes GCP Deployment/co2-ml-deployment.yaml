@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: co2-ml-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: co2-ml-app
+  template:
+    metadata:
+      labels:
+        app: co2-ml-app
+    spec:
+      containers:
+      - name: co2-ml-app
+        image: gcr.io/co2-kube-gcp-deploy/co2_ml_app
+        ports:
+        - containerPort: 8080
