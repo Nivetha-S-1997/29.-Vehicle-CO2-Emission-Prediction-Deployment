@@ -17,7 +17,7 @@ The application is organized into multiple deployment implementations using Goog
 - **Cloud Platform:** Google Cloud Platform (GCP)
 - **Cloud Services:** Google App Engine, Google Kubernetes Engine (GKE), Artifact Registry, Cloud Build
 - **Orchestration:** Kubernetes
-- **CI/CD:** GitHub Actions
+- **CI/CD:** Google Cloud Build Triggers, Cloud Build
 - **Version Control:** Git, GitHub
 
 ## Machine Learning Model
@@ -83,18 +83,26 @@ The application was successfully accessed and tested using the external IP addre
 
 ### 4. CI/CD Pipeline
 
-The project includes a CI/CD workflow using GitHub Actions and Google Cloud Platform for automating application delivery.
+Implemented an automated CI/CD pipeline using **GitHub, Google Cloud Build, Docker, Artifact Registry and Cloud Run**.
 
 **Pipeline Workflow:**
 
-1. Source code is maintained in GitHub.
-2. Code changes trigger the CI/CD workflow.
-3. Application dependencies are installed and automated checks are executed.
-4. A Docker image is built for the application.
-5. The Docker image is pushed to Google Cloud Artifact Registry.
-6. The updated application is deployed to the configured cloud environment.
+1. Developed and maintained the Flask application in a GitHub repository.
+2. Configured a Google Cloud Build trigger to automatically initiate builds when changes are pushed to the main branch.
+3. Used `cloudbuild.yaml` to define the automated build and deployment steps.
+4. Built a Docker image using the application Dockerfile.
+5. Pushed the Docker image to Google Cloud Artifact Registry.
+6. Automatically deployed the updated containerized application to Google Cloud Run.
 
-**Tools:** GitHub Actions, Docker, Google Cloud Platform, Artifact Registry.
+**CI/CD Validation:**
+
+Successfully verified automatic deployment by modifying the input page to display measurement units for Engine Size (L) and Combined Fuel Consumption (L/100 km).
+
+After pushing the changes to GitHub, the updated application was automatically deployed and the modifications were visible in the Cloud Run application.
+
+**Technologies:** Git, GitHub, Google Cloud Build, Cloud Build Triggers, Docker, Artifact Registry, Cloud Run.
+
+**Outcome:** Successfully implemented and tested automated application deployment without requiring manual builds or deployment commands.
 
 ## Repository Structure
 
@@ -129,6 +137,16 @@ Vehicle-CO2-Emission-Prediction/
 │   ├── co2-ml-service.yaml
 │   ├── requirements.txt
 │   └── Final_model_randomforest.sav
+│  
+├── CI-CD/
+│   ├── templates/
+│   │   ├── input.html
+│   │   └── output.html
+│   ├── main.py
+│   ├── Dockerfile
+│   ├── cloudbuild.yaml
+│   ├── requirements.txt
+│   └── Final_model_randomforest.sav
 │
 └── README.md
 ```
@@ -140,7 +158,7 @@ Vehicle-CO2-Emission-Prediction/
 - Building and running containerized applications with Docker.
 - Managing Kubernetes Pods, Deployments and Services on GKE.
 - Configuring Google Cloud IAM permissions and Artifact Registry access.
-- Understanding CI/CD workflows for automated application delivery.
+- Implementing and validating automated CI/CD deployment using Google Cloud Build triggers and Cloud Run.
 
 ## Author
 
